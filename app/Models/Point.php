@@ -6,7 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tocka extends Model
+class Point extends Model
 {
     use HasFactory;
 
@@ -14,22 +14,22 @@ class Tocka extends Model
 
     public function parent()
     {
-        return $this->belongsTo(Tocka::class, 'parent_id');
+        return $this->belongsTo(Point::class, 'parent_id');
     }
 
     public function children()
     {
-        return $this->hasMany(Tocka::class, 'parent_id');
+        return $this->hasMany(Point::class, 'parent_id');
     }
 
-    public function Materijali()
+    public function materials()
     {
-        return $this->hasMany(Materijal::class);
+        return $this->hasMany(Material::class);
     }
 
-    public function Sjednica()
+    public function meeting()
     {
-        return $this->belongsTo(Sjednica::class);
+        return $this->belongsTo(Meeting::class);
     }
 }
 

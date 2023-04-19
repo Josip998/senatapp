@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTockeTable extends Migration
+class CreatePointsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateTockeTable extends Migration
      */
     public function up()
     {
-        Schema::create('tocke', function (Blueprint $table) {
+        Schema::create('points', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->text('description');
             $table->unsignedBigInteger('parent_id')->nullable();
-            $table->foreign('parent_id')->references('id')->on('tocke')->onDelete('cascade');
-            $table->unsignedBigInteger('sjednica_id');
-            $table->foreign('sjednica_id')->references('id')->on('sjednice')->onDelete('cascade');
+            $table->foreign('parent_id')->references('id')->on('points')->onDelete('cascade');
+            $table->unsignedBigInteger('meeting_id');
+            $table->foreign('meeting_id')->references('id')->on('meetings')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -32,7 +32,8 @@ class CreateTockeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tocke');
+        Schema::dropIfExists('points');
     }
 }
+
 

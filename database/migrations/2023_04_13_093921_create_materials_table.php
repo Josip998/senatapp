@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMaterijaliTable extends Migration
+class CreateMaterialsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateMaterijaliTable extends Migration
      */
     public function up()
     {
-        Schema::create('materijali', function (Blueprint $table) {
+        Schema::create('materials', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('filename');
-            $table->unsignedBigInteger('tocka_id');
-            $table->foreign('tocka_id')->references('id')->on('tocke')->onDelete('cascade');
+            $table->unsignedBigInteger('point_id');
+            $table->foreign('point_id')->references('id')->on('points')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,8 +30,9 @@ class CreateMaterijaliTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('materijali');
+        Schema::dropIfExists('materials');
     }
 }
+
 
 
