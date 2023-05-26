@@ -63,4 +63,20 @@ class MeetingController extends Controller
 
         return redirect()->route('meetings.index');
     }
+
+    public function renderIndex()
+    {
+        return view('meetings.index');
+    }
+
+    public function renderCreate()
+    {
+        return view('meetings.create');
+    }
+
+    public function renderEdit(Meeting $meeting)
+    {
+        return view('meetings.edit', compact('meeting'));
+    }
 }
+
